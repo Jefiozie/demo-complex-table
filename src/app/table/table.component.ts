@@ -1,31 +1,28 @@
-import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "app-table",
+  selector: "app-table-ngfor-empty-state",
   standalone: true,
   imports: [CommonModule],
   template: `
-    <table>
+    <table *ngIf="rows.length > 0; else emptyState">
       <thead>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Age</th>
+        <th *ngFor="let column of columns">{{ column }}</th>
       </thead>
       <tbody>
         <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>43</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>38</td>
+          <td *ngFor="let row of rows">{{ row }}</td>
         </tr>
       </tbody>
     </table>
+    <ng-template #emptyState>
+      <p>no data</p>
+    </ng-template>
   `,
   styles: [],
 })
-export class TableComponent {}
+export class TableWithNgForAndEmptyStateComponent {
+  @Input() columns: string[] = [];
+  @Input() rows: string[] = [];
+}
