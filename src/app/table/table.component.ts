@@ -22,7 +22,7 @@ import { Component, Input } from "@angular/core";
   `,
   styles: [],
 })
-export class TableWithNgForAndEmptyStateComponent {
+export default class TableWithNgForAndEmptyStateComponent {
   @Input() columns: string[] = [];
   @Input() rows: string[] = [];
 }

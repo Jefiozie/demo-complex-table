@@ -1,21 +1,15 @@
 import { Component } from "@angular/core";
-import { TableWithNgForAndEmptyStateComponent } from "./table/table.component";
+import { RouterLink, RouterOutlet } from "@angular/router";
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [TableWithNgForAndEmptyStateComponent],
-  template: `<h1>demo</h1>
-  <h2>emtpy table</h2>
-  <app-table-ngfor-empty-state />
-  
-  <h2>table with data</h2>
-  <app-table-ngfor-empty-state
-    [columns]="['column 1', 'column 2']"
-    [rows]="['row 1', 'row 2']" 
-    />`,
+  imports: [RouterOutlet, RouterLink],
+  template: ` <ul>
+      <li><a routerLink="simple-table">Simple</a></li>
+      <li><a routerLink="advanced-table">advanced</a></li>
+    </ul>
+    <router-outlet></router-outlet>`,
   styles: [],
 })
-export class AppComponent {
-  title = "demo-complex-table";
-}
+export class AppComponent {}
