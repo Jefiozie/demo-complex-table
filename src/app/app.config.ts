@@ -12,6 +12,10 @@ const appRoutes = [
     loadComponent: () => import("./page-advanced-table.component"),
   },
   {
+    path: "complex-table",
+    loadComponent: () => import("./page-complext-table.component"),
+  },
+  {
     path: "**",
     redirectTo: "simple-table",
   },

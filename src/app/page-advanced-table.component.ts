@@ -5,12 +5,13 @@ import { CommonModule } from "@angular/common";
 @Component({
   standalone: true,
   imports: [CommonModule, TableWithDirsComponent],
-  template: ` <h2>default table</h2>
+  template: ` <h1>default table</h1>
+  <h2>simple</h2>
     <app-table-dirs 
       [data]="data"
     />
-    
-    <h2>table with custom header and rows</h2>
+    <h2>configurable</h2>
+
     <app-table-dirs
 
       [data]="data"
@@ -24,7 +25,7 @@ import { CommonModule } from "@angular/common";
         <td>{{ row.a }}</td>
         <td>{{ row.b }}</td>
         <td>
-          <button (click)="removeRow(row, index)">Delete</button>
+          <button (click)="removeRow(row)">Delete</button>
         </td>
       </ng-template>
     </app-table-dirs>
@@ -38,9 +39,9 @@ export default class PageAdvancedTable {
     { a: "column 3", b: "data 3" },
   ];
 
-  removeRow(row: any, index: number) {
+  removeRow(row: any) {
     console.dir(row);
-    console.error(index);
+    const index = this.data.findIndex((r) => r === row);
     this.data.splice(index, 1);
   }
 }

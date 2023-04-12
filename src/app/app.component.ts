@@ -8,6 +8,7 @@ import { RouterLink, RouterOutlet } from "@angular/router";
   template: ` <ul>
       <li><a routerLink="simple-table">Simple</a></li>
       <li><a routerLink="advanced-table">advanced</a></li>
+      <li><a routerLink="complex-table">complex</a></li>
     </ul>
     <router-outlet></router-outlet>`,
   styles: [],
