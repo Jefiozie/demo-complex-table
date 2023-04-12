@@ -20,12 +20,16 @@ import { CommonModule } from "@angular/common";
         <th>A</th>
         <th>B</th>
         <th>C</th>
+        <th>sort</th>
       </ng-template>
       <ng-template #rows let-row let-index>
         <td>{{ row.a }}</td>
         <td>{{ row.b }}</td>
         <td>
           <button (click)="removeRow(row)">Delete</button>
+        </td>
+        <td>
+          <button (click)="sortData()">sort</button>
         </td>
       </ng-template>
     </app-table-dirs>
@@ -38,6 +42,11 @@ export default class PageAdvancedTable {
     { a: "column 2", b: "data 2" },
     { a: "column 3", b: "data 3" },
   ];
+
+  // make a new array with the same data but in reverse order but add a new row
+  sortData() {
+    this.data = [...this.data.reverse(), { a: "column 4", b: "data 4" }];
+  }
 
   removeRow(row: any) {
     console.dir(row);

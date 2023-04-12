@@ -6,23 +6,32 @@ import { Component, Input } from "@angular/core";
   standalone: true,
   imports: [CommonModule],
   template: `
-    <table *ngIf="rows.length > 0; else emptyState">
+    <table>
       <thead>
         <th *ngFor="let column of columns">{{ column }}</th>
+        <th *ngIf="withSort">sort</th>
       </thead>
       <tbody>
-        <tr>
-          <td *ngFor="let row of rows">{{ row }}</td>
+        <tr *ngFor="let row of rows">
+          <td>{{ row.a }}</td>
+          <td>{{ row.b }}</td>
+          <td *ngIf="withSort">
+            <button (click)="sortData()">sort</button>
+          </td>
         </tr>
       </tbody>
     </table>
-    <ng-template #emptyState>
-      <p>no data</p>
-    </ng-template>
   `,
   styles: [],
 })
-export default class TableWithNgForAndEmptyStateComponent {
+export default class TableWithNgForAndEmptyStateComponent<
+  T extends { a: string; b: string }
+> {
   @Input() columns: string[] = [];
-  @Input() rows: string[] = [];
+  @Input() rows: T[] = [];
+  @Input() withSort = true;
+
+  sortData() {
+    this.rows = [...this.rows.reverse()];
+  }
 }

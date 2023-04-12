@@ -18,7 +18,7 @@ import { DIRS } from "./table/table-complex.component";
         <th>B</th>
         <th>C</th>
       </ng-template>
-      <ng-template [appTableRow]="data" let-row let-index>
+      <ng-template [appTableRow]="data" let-row>
       <td>{{ row.a }}</td>
         <td>{{ row.b }}</td>
         <td>
@@ -36,6 +36,7 @@ import { DIRS } from "./table/table-complex.component";
         <th></th>
       </ng-template>
       <ng-container *appTableRow="data as row">
+      <!-- <ng-container *appTableRow="data; let row"> -->
       <td>{{ row.a }}</td>
         <td>{{ row.b }}</td>
         <td>
